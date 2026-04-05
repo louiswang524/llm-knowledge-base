@@ -1,0 +1,10 @@
+# Required for /kb-output charts
+matplotlib>=3.7.0
+networkx>=3.0
+
+# Required for semantic search fallback in kb_search.py
+sentence-transformers>=2.2.0
+
+# Required for kb_search.py TF-IDF (stdlib only — no extra install needed for keyword search)
+# scikit-learn is optional but improves TF-IDF accuracy
+scikit-learn>=1.3.0

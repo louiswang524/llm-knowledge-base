@@ -35,10 +35,9 @@ The wiki grows smarter with every compile cycle. Q&A answers compound on each ot
 | Python 3.8+ | Required for the search tool |
 | Git | Required — the KB directory is a git repo |
 
-**Optional Python packages** (install with pip):
+**Optional Python packages:**
 ```bash
-pip install matplotlib networkx          # for /kb-output charts
-pip install sentence-transformers        # for semantic search (recommended)
+pip install -r requirements.txt
 ```
 
 ---
@@ -283,7 +282,7 @@ Claude Code skills are plain markdown files that tell Claude how to behave when 
 Contributions welcome. To add or improve a skill:
 
 1. Fork the repo
-2. Edit or create a skill `.md` file (follow the existing format — frontmatter with `name`, `description`, `trigger`, then step-by-step instructions)
+2. Edit or create a skill `.md` file in `skills/` (follow the existing format — frontmatter with `name`, `description`, `trigger`, then step-by-step instructions)
 3. Test it by running `bash setup.sh` and invoking the skill in Claude Code
 4. Open a PR with a description of what changed and why
 
