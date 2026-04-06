@@ -67,7 +67,11 @@ echo "Wrote config to $CONFIG"
 SKILLS_DIR="$HOME/.claude/skills"
 mkdir -p "$SKILLS_DIR"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-cp "$SCRIPT_DIR"/skills/kb-*.md "$SKILLS_DIR/"
+for skill_file in "$SCRIPT_DIR"/skills/kb-*.md; do
+  skill_name="$(basename "$skill_file" .md)"
+  mkdir -p "$SKILLS_DIR/$skill_name"
+  cp "$skill_file" "$SKILLS_DIR/$skill_name/SKILL.md"
+done
 echo "Installed skills to $SKILLS_DIR"
 
 # Install search tool into KB directory
