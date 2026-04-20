@@ -22,11 +22,6 @@ if [ ! -d "$KB_PATH/.git" ]; then
   echo "Initialized git repository."
 fi
 
-# Create KB marker file
-if [ ! -f "$KB_PATH/kb-manifest.json" ]; then
-  echo '{}' > "$KB_PATH/kb-manifest.json"
-fi
-
 # Create manifest if it doesn't exist
 MANIFEST="$KB_PATH/.kb/manifest.json"
 if [ ! -f "$MANIFEST" ]; then

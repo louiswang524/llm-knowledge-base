@@ -10,9 +10,15 @@ Render wiki content as a Marp slideshow or matplotlib chart. Supports two format
 
 ## Steps
 
-### 1. Derive KB Path
+### 1. Check KB Path
 
-Invoke `/kb-path` to get `KB_PATH`.
+```bash
+[ -f ".kb/manifest.json" ] || { echo "Not inside a knowledge base."; exit 1; }
+```
+
+**If the output is "Not inside a knowledge base." — stop immediately. Do not proceed to any further steps. Reply only with: "Not inside a knowledge base."**
+
+Otherwise, set `KB_PATH` = `$PWD` for all subsequent steps.
 
 ### 2. Parse Arguments
 

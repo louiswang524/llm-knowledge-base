@@ -304,7 +304,6 @@ Requires: `pip install sentence-transformers` for semantic fallback (recommended
 │   └── archive/              # absorbed articles after /kb-merge
 ├── outputs/                   # Q&A answers, reports, slides, charts
 ├── kb_search.py               # search CLI tool
-├── kb-manifest.json           # KB root marker — used by skills to locate the KB path
 ├── .claude/
 │   └── skills/               # KB-local Claude Code skills
 └── .kb/
