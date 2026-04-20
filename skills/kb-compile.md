@@ -10,15 +10,9 @@ Batch process all uncompiled raw files into the wiki. Incremental — only proce
 
 ## Steps
 
-### 1. Read Config
+### 1. Derive KB Path
 
-Run:
-```bash
-cat ~/.claude/kb-config.json
-```
-
-Extract `kb_path`. Expand `~` to the actual home directory path.
-Set this as `KB_PATH` for all subsequent steps.
+Invoke `/kb-path` to get `KB_PATH`.
 
 ### 2. Read Manifest
 

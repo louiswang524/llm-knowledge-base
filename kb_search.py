@@ -22,17 +22,13 @@ from pathlib import Path
 # ---------------------------------------------------------------------------
 
 def load_config() -> Path:
-    config_path = Path.home() / ".claude" / "kb-config.json"
-    if not config_path.exists():
-        print(json.dumps({"error": "~/.claude/kb-config.json not found. Run setup.sh first."}))
-        sys.exit(1)
-    with open(config_path) as f:
-        cfg = json.load(f)
-    kb_path = Path(cfg["kb_path"]).expanduser().resolve()
-    if not kb_path.exists():
-        print(json.dumps({"error": f"KB path does not exist: {kb_path}"}))
-        sys.exit(1)
-    return kb_path
+    kb_path = Path.cwd()
+    while kb_path != kb_path.parent:
+        if (kb_path / "kb-manifest.json").exists():
+            return kb_path.resolve()
+        kb_path = kb_path.parent
+    print(json.dumps({"error": "Not inside a knowledge base (kb-manifest.json not found)."}))
+    sys.exit(1)
 
 
 # ---------------------------------------------------------------------------

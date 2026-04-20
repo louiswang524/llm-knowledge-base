@@ -96,17 +96,15 @@ bash setup.sh ~/knowledge-base
 
 # 3. Open ~/knowledge-base as a vault in Obsidian
 
-# 4. Open Claude Code in any directory and start using the skills
+# 4. Open Claude Code from ~/knowledge-base and start using the skills
 ```
 
 `setup.sh` will:
 - Create the KB directory structure
 - Initialize it as a git repo
-- Write `~/.claude/kb-config.json` pointing to your KB
-- Copy all 9 skills into `~/.claude/skills/` so Claude Code can find them
+- Create `kb-manifest.json` at the KB root (used by skills to locate the KB)
+- Copy all 9 skills into `<KB_PATH>/.claude/skills/`
 - Copy `kb_search.py` into your KB directory
-
-> **Note:** Skills are installed globally into `~/.claude/skills/`. You can use them from any Claude Code session, not just from the repo directory.
 
 ---
 
@@ -306,6 +304,9 @@ Requires: `pip install sentence-transformers` for semantic fallback (recommended
 │   └── archive/              # absorbed articles after /kb-merge
 ├── outputs/                   # Q&A answers, reports, slides, charts
 ├── kb_search.py               # search CLI tool
+├── kb-manifest.json           # KB root marker — used by skills to locate the KB path
+├── .claude/
+│   └── skills/               # KB-local Claude Code skills
 └── .kb/
     ├── manifest.json          # compilation state per raw file
     └── reflect_state.json     # last reflect timestamp + synthesized articles
@@ -349,7 +350,7 @@ Requires: `pip install sentence-transformers` for semantic fallback (recommended
 
 ## What Claude Code Skills Are
 
-Claude Code skills are plain markdown files that tell Claude how to behave when you type a trigger command (e.g. `/kb-ingest`). They live in `~/.claude/skills/` and are automatically available in every Claude Code session after installation. This repo ships 9 skills — `setup.sh` installs them all.
+Claude Code skills are plain markdown files that tell Claude how to behave when you type a trigger command (e.g. `/kb-ingest`). This repo ships 9 skills — `setup.sh` installs them all in the KB directory. They live in `$KB_PATH/.claude/skills/` and are automatically available in every Claude Code session opened from your KB directory. 
 
 ---
 

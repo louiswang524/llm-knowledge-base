@@ -10,14 +10,9 @@ Merge a second KB vault into the current one. Handles conflicts by auto-merging 
 
 ## Steps
 
-### 1. Read Config
+### 1. Derive KB Path
 
-```bash
-cat ~/.claude/kb-config.json
-```
-
-Extract `kb_path`. Expand `~` to the actual home directory path.
-Set this as `KB_PATH` (primary vault) for all subsequent steps.
+Invoke `/kb-path` to get `KB_PATH` (primary vault).
 
 ### 2. Validate Source Vault
 

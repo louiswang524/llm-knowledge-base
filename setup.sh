@@ -22,6 +22,11 @@ if [ ! -d "$KB_PATH/.git" ]; then
   echo "Initialized git repository."
 fi
 
+# Create KB marker file
+if [ ! -f "$KB_PATH/kb-manifest.json" ]; then
+  echo '{}' > "$KB_PATH/kb-manifest.json"
+fi
+
 # Create manifest if it doesn't exist
 MANIFEST="$KB_PATH/.kb/manifest.json"
 if [ ! -f "$MANIFEST" ]; then
@@ -53,18 +58,8 @@ if [ ! -f "$GITIGNORE" ]; then
 EOF
 fi
 
-# Write config
-CONFIG="$HOME/.claude/kb-config.json"
-mkdir -p "$HOME/.claude"
-cat > "$CONFIG" << EOF
-{
-  "kb_path": "$KB_PATH"
-}
-EOF
-echo "Wrote config to $CONFIG"
-
 # Install skills
-SKILLS_DIR="$HOME/.claude/skills"
+SKILLS_DIR="$KB_PATH/.claude/skills"
 mkdir -p "$SKILLS_DIR"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 for skill_file in "$SCRIPT_DIR"/skills/kb-*.md; do

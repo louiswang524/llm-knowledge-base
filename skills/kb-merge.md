@@ -10,14 +10,9 @@ Merge two concept articles into one. Synthesizes content, updates all backlinks 
 
 ## Steps
 
-### 1. Read Config
+### 1. Derive KB Path
 
-```bash
-cat ~/.claude/kb-config.json
-```
-
-Extract `kb_path`. Expand `~` to the actual home directory path.
-Set this as `KB_PATH` for all subsequent steps.
+Invoke `/kb-path` to get `KB_PATH`.
 
 ### 2. Determine Mode
 
